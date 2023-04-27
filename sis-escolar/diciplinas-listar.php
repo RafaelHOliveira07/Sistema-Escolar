@@ -32,7 +32,7 @@ $lista = $diciplina->listar();
         <?php foreach ($lista as $linha): ?>
         <tr>
             <td><?php echo $linha['id'] ?></td>
-            <td><?php echo $linha['descDici'] ?></td>
+            <td><?php echo $linha['descDiciplina'] ?></td>
             <td><?php echo $linha['cargaHora'] ?> horas</td>
             <td>
                 <a href="#">Atualizar</a>

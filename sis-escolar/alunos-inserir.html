@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Escolar</title>
+</head>
+<script>
+    function limpa_formulário_cep() {
+        document.getElementById('endereco').value = ("");
+    }
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('endereco').value = (conteudo.logradouro);
+            document.getElementById('bairro').value = (conteudo.bairro);
+            document.getElementById('cidade').value = (conteudo.localidade);
+            document.getElementById('estado').value = (conteudo.uf);
+        }
+        else {
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+    function pesquisacep(valor) {
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+            //Valida o formato do CEP.
+            if (validacep.test(cep)) {
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('endereco').value = "...";
+                document.getElementById('bairro').value = "...";
+                document.getElementById('cidade').value = "...";
+                document.getElementById('estado').value = "...";
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+            }
+            else {
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        }
+        else {
+            limpa_formulário_cep();
+        }
+    }
+</script>
+<body>
+    <h1>Sistema Acadêmico</h1>
+    <h3>Nova turma</h3>
+    <form action="alunos-gravar.php" method="post">
+        <label for="nome">Nome:
+            <input type="text" name="nome">
+        </label>
+        <br><br>
+        <label for="dataNasc">Data de Nascimento:
+            <input type="date" name="dataNasc">
+        </label>
+        <br><br>
+        <label for="email">E-mail:
+            <input type="email" name="email">
+        </label>
+        <br><br>
+        <label for="tel">Telefone:
+            <input type="text" name="tel">
+        </label>
+        <br><br>
+        <label for="cep">CEP:
+            <input type="text" name="cep" id="cep" onblur="pesquisacep(this.value);">
+        </label>
+        <br><br>
+        <label for="endereco">Endereço:
+            <input type="text" name="endereco" id="endereco">
+        </label>
+        <br><br>
+        <label for="nCasa">Nº:
+            <input type="text" name="nCasa">
+        </label>
+        <br><br>
+        <label for="bairro">Bairro:
+            <input type="text" name="bairro" id="bairro">
+        </label>
+        <br><br>
+        <label for="estado">Estado:
+            <input type="text" name="estado" id="estado">
+        </label>
+        <br><br>
+        <label for="cidade">Cidade:
+            <input type="text" name="cidade" id="cidade">
+        </label>
+        <br><br>
+        <label for="genero">Gênero:
+            <input type="radio" name="genero" value="0">Masculino
+            <input type="radio" name="genero" value="1">Feminino
+        </label>
+        <br><br>
+        <label for="Turma">Turma:
+            <select name="turma">
+                <option value="ge">Gestão Empresarial</option>
+                <option value="gpi">Gestão da Produção Industrial</option>
+                <option value="gti">Gestão da Técnologia da Informação</option>
+                <option value="dsm">Desenvolvimento de software Multiplataforma</option>
+            </select>
+        </label>
+        <br><br>
+        <label for="statusMat">
+            <input type="checkbox" name="statusMat"> Mátricula Ativa
+        </label>
+        <br><br>
+        <a href="../LuisFelipeSalvarani/alunos-inserir.html"></a>
+        <input type="submit" value="Gravar">
+    </form>
+</body>
+</html>

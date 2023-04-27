@@ -3,13 +3,13 @@
 class Diciplina
 {
     public $id;
-    public $descDici;
+    public $descDiciplina;
     public $cargaHora;
 
     public function inserir()
     {
         // Define a string SQL de inserção de dados na tabela "tb_turmas"
-        $sql = "INSERT INTO tb_diciplinas (descDici, cargaHora) VALUES (
+        $sql = "INSERT INTO tb_diciplinas (descDiciplina, cargaHora) VALUES (
             '" .$this->descDici. "',
             '" .$this->cargaHora. "'
         )";

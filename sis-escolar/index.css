@@ -1,0 +1,13 @@
+body{
+    flex-direction: column;
+}
+
+.botao{
+    text-decoration: none;
+    color: #fff;
+}
+
+.botao:hover{
+    text-decoration: none;
+    color: #fff;
+}
