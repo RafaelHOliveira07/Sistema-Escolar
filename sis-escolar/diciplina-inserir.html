@@ -5,20 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Escolar</title>
+    <link href="https://getbootstrap.com.br/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Sistema Acadêmico</h1>
-    <h3>Nova Diciplina</h3>
+    <h1 class="font-weight-bold text-dark">Sistema Acadêmico</h1>
+    <h3 class="h3 mb-3 font-weight-normal">Nova Diciplina</h3>
     <form action="diciplinas-gravar.php" method="post">
-        <label for="descDiciplina">Diciplina:
-            <input type="text" name="descDiciplina">
-        </label>
-        <br><br>
-        <label for="cargaHora">Carga horária:
-            <input type="number" name="cargaHora">
-        </label>
-        <br><br>
-        <input type="submit" value="Gravar">
+        <div class="form-group">
+            <label class="sr-only" for="descDici">Diciplina:</label>
+            <input class="form-control" type="text" name="descDici" placeholder="Diciplina">
+        </div>
+        
+        <div class="form-group">
+            <label class="sr-only" for="cargaHora">Carga horária:</label>
+            <input class="form-control" type="number" name="cargaHora" placeholder="Carga Horária">
+        </div>
+        
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Gravar</a></button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
     </form>
 </body>
 </html>

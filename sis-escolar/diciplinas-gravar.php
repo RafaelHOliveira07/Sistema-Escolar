@@ -7,7 +7,7 @@ $diciplina = new Diciplina();
 
 // Define as propriedades descTurma e ano do objeto Turma
 // com os valores enviados pelo formulário
-$diciplina->descDici = $_POST['descDiciplina'];
+$diciplina->descDici = $_POST['descDici'];
 $diciplina->cargaHora = $_POST['cargaHora'];
 
 // Chama o método inserir() no objeto Turma para inserir

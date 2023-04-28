@@ -35,8 +35,8 @@ $lista = $turma->listar();
             <td><?php echo $linha['descTurma'] ?></td>
             <td><?php echo $linha['ano'] ?></td>
             <td>
-                <a href="#">Atualizar</a>
-                <a href="#">Excluir</a>
+                <a href="turmas-editar.php?id=<?= $linha['id'] ?>">Atualizar</a>
+                <a href="turmas-excluir.php?id=<?= $linha['id'] ?>">Excluir</a>
             </td>
         </tr>
         <?php endforeach ?>
