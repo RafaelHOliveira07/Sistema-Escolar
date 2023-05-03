@@ -27,7 +27,7 @@ $lista = $diciplina->listar();
     <h3 class="h3 mb-3 font-weight-normal">Listar Diciplinas</h3>
     <div class="table-responsive">
         <table class="table table-hover" border="1">
-        <thead class="table-dark">
+        <thead class="thead-dark">
             <tr>
                 <th>Código</th>
                 <th>Turma</th>
@@ -43,8 +43,8 @@ $lista = $diciplina->listar();
                 <td><?php echo $linha['descDici'] ?></td>
                 <td><?php echo $linha['cargaHora'] ?> horas</td>
                 <td>
-                    <a href="diciplinas-editar.php?id=<?= $linha['id'] ?>">Atualizar</a>
-                    <a href="diciplinas-excluir.php?id=<?= $linha['id'] ?>">Excluir</a>
+                    <a class="btn btn-dark btn-sm" href="diciplinas-editar.php?id=<?= $linha['id'] ?>">Atualizar</a>
+                    <a class="btn btn-dark btn-sm" href="diciplinas-excluir.php?id=<?= $linha['id'] ?>">Excluir</a>
                 </td>
             </tr>
         </tbody>
@@ -52,6 +52,8 @@ $lista = $diciplina->listar();
         <?php endforeach ?>
     </table>
     </div>
+    
+    <a href="../sis-escolar/diciplinas-gerenciar.html" class="btn btn-lg btn-dark px-5 direita">Voltar</a>
     
 </body>
 </html>

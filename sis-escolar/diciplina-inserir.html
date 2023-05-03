@@ -9,21 +9,23 @@
     <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
-<body>
+<body class="text-center">
     <h1 class="font-weight-bold text-dark">Sistema Acadêmico</h1>
     <h3 class="h3 mb-3 font-weight-normal">Nova Diciplina</h3>
     <form action="diciplinas-gravar.php" method="post">
         <div class="form-group">
             <label class="sr-only" for="descDici">Diciplina:</label>
-            <input class="form-control" type="text" name="descDici" placeholder="Diciplina">
+            <input class="form-control form-control-lg" type="text" name="descDici" placeholder="Diciplina">
         </div>
         
         <div class="form-group">
             <label class="sr-only" for="cargaHora">Carga horária:</label>
-            <input class="form-control" type="number" name="cargaHora" placeholder="Carga Horária">
+            <input class="form-control form-control-lg" type="number" name="cargaHora" placeholder="Carga Horária">
         </div>
         
-        <button class="btn btn-lg btn-dark btn-block" type="submit">Gravar</a></button>
+        <a href="../sis-escolar/diciplinas-gerenciar.html" class="btn btn-lg btn-dark btn-lg px-5">Voltar</a>
+        <button class="btn btn-lg btn-dark btn-lg px-5" type="submit">Gravar</button>
+        
         <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
     </form>
 </body>
