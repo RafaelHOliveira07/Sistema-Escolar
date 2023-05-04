@@ -20,13 +20,14 @@ $lista = $diciplina->listar();
     <title>Sistema Acadêmico</title>
     <link href="https://getbootstrap.com.br/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="lista.css">
+    <link rel="stylesheet" href="voltar.css">
 </head>
-<body>
+<body class="text-center flex-column">
     <h1 class="font-weight-bold text-dark">Sistema Acadêmico</h1>
-    <h3 class="h3 mb-3 font-weight-normal">Listar Diciplinas</h3>
-    <div class="table-responsive">
-        <table class="table table-hover" border="1">
+    <h3 class="h3 mb-3 font-weight-normal">Lista de Diciplinas</h3>
+    <div class="table-responsive tabela">
+        <table class="table table-sm table-hover" border="1">
         <thead class="thead-dark">
             <tr>
                 <th>Código</th>
@@ -53,7 +54,7 @@ $lista = $diciplina->listar();
     </table>
     </div>
     
-    <a href="../sis-escolar/diciplinas-gerenciar.html" class="btn btn-lg btn-dark px-5 direita">Voltar</a>
+    <a href="../sis-escolar/diciplinas-gerenciar.html" class="btn btn-lg btn-dark px-5 voltar">Voltar</a>
     
 </body>
 </html>

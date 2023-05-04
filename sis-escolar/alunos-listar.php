@@ -17,30 +17,37 @@ $lista = $aluno->listar();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Acadêmico</title>
+    <title>Editar Aluno</title>
+    <link href="https://getbootstrap.com.br/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="voltar.css">
 </head>
-<body>
-    <h1>Sistema Acadêmico</h1>
-    <h3>Listar Alunos</h3>
-    <table border="1">
-        <tr>
-            <th>Código</th>
-            <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>E-mail</th>
-            <th>Telefone</th>
-            <th>CEP</th>
-            <th>Endereço</th>
-            <th>Nº</th>
-            <th>Bairro</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-            <th>Gênero</th>
-            <th>Turma</th>
-            <th>Statudos da Matrícula</th>
-        </tr>
-        <?php foreach ($lista as $linha): ?>
-        <tr>
+<body class="text-center flex-column">
+    <h1 class="font-weight-bold text-dark">Sistema Acadêmico</h1>
+    <h3 class="h3 mb-3 font-weight-normal">Lista de Alunos</h3>
+    <div class="table-responsive tabela">
+        <table class="table table-sm table-hover" border="1">
+        <thead class="thead-dark">
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>CEP</th>
+                <th>Endereço</th>
+                <th>Nº</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Gênero</th>
+                <th>Turma</th>
+                <th>Statudos da Matrícula</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+            <?php foreach ($lista as $linha): ?>
+            <tr>
             <td><?php echo $linha['id'] ?></td>
             <td><?php echo $linha['nome'] ?></td>
             <td><?php echo $linha['dataNasc'] ?></td>
@@ -56,11 +63,14 @@ $lista = $aluno->listar();
             <td><?php echo $linha['turma'] ?></td>
             <td><?php echo $linha['statusMat'] ?></td>
             <td>
-                <a href="#">Atualizar</a>
-                <a href="#">Excluir</a>
+                <a class="btn btn-dark btn-sm" href="alunos-editar.php?id=<?= $linha['id'] ?>">Atualizar</a>
+                <a class="btn btn-dark btn-sm" href="alunos-excluir.php?id=<?= $linha['id'] ?>">Excluir</a>
             </td>
-        </tr>
-        <?php endforeach ?>
-    </table>
+            </tr>
+            <?php endforeach ?>
+        </table>
+    </div>
+
+    <a href="../sis-escolar/alunos-gerenciar.php" class="btn btn-lg btn-dark px-5 voltar">Voltar</a>
 </body>
 </html>

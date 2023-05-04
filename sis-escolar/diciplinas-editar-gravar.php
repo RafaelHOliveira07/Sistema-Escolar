@@ -8,11 +8,11 @@ $id = $_POST['id'];
 $diciplina = new Diciplina($id);
 // Define as propriedades descDiciplina e ano do objeto Diciplina
 $diciplina->descDici = $_POST['descDici'];
-$diciplina->ano = $_POST['ano'];
+$diciplina->cargaHora = $_POST['cargaHora'];
 
 // Chama o método atualizar() no objeto Diciplina
 $diciplina->atualizar();
-// Redireciona o usuário para a página "Diciplinas-listar.php"
+// Redireciona o usuário para a página "dici$diciplinas-listar.php"
 header('Location: diciplinas-listar.php');
 
 ?>

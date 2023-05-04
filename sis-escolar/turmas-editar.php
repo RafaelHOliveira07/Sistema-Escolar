@@ -16,20 +16,29 @@ $turma = new Turma($id);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Turma</title>
+    <link href="https://getbootstrap.com.br/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Sistema Acadêmico</h1>
-    <h3>Nova Turma</h3>
+<body class="text-center flex-column">
+    <h1 class="font-weight-bold text-dark">Sistema Acadêmico</h1>
+    <h3 class="h3 mb-3 font-weight-normal">Editar Turma</h3>
     <form action="turmas-editar-gravar.php" method="post">
         <input type="hidden" name="id" value="<?= $turma->id ?>">
-        <label for="descTurma">Turma:</label>
-        <input type="text" name="descTurma" value="<?php echo $turma->descTurma ?>">
-        <br><br>
-        <label for="ano">Ano:</label>
-        <input type="text" name="ano" value="<?= $turma->ano ?>">
-        <br><br>
-        <input type="submit" value="Gravar">
+        <div class="form-group">
+            <label class="sr-only" for="descTurma">Turma:</label>
+            <input class="form-control form-control-lg" type="text" name="descTurma" value="<?php echo $turma->descTurma ?>">
+        </div>
+        
+        <div class="form-group">
+            <label class="sr-only" for="ano">Ano:</label>
+            <input class="form-control form-control-lg" type="number" name="ano" value="<?= $turma->ano ?>">
+        </div>
+        
+        <a href="../sis-escolar/turmas-listar.php" class="btn btn-lg btn-dark btn-lg px-5">Voltar</a>
+        <button class="btn btn-lg btn-dark btn-lg px-5" type="submit">Gravar</button>
+        
+        <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
     </form>
 </body>
 </html>
