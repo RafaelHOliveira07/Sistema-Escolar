@@ -1,5 +1,11 @@
 <?php
 
+require_once 'usuario-verifica.php';
+
+?>
+
+<?php
+
 // Inclui o arquivo que contém a definição de classe Aluno 
 require_once "classes/Aluno.php";
 
@@ -19,6 +25,8 @@ $aluno = new Aluno($id);
     <title>Editar Turma</title>
     <link href="https://getbootstrap.com.br/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="voltar.css">
 </head>
 <body class="text-center flex-column">
     <h1 class="font-weight-bold text-dark">Sistema Acadêmico</h1>
@@ -73,37 +81,71 @@ $aluno = new Aluno($id);
                     <input class="form-control form-control-lg" type="text" name="bairro" value="<?= $aluno->bairro ?>">
                 </div>
                 
-                <div class="form-group col-6">
+                <div class="form-group col-5">
                     <label class="sr-only" for="cidade">Cidade:</label>
                     <input class="form-control form-control-lg" type="text" name="cidade" value="<?= $aluno->cidade ?>">
                 </div>
                 
-                <div class="form-group col-1">
+                <div class="form-group col-2">
                     <label class="sr-only" for="estado">Estado:</label>
                     <input class="form-control form-control-lg" type="text" name="estado" value="<?= $aluno->estado ?>">
                 </div>
             </div>
-            
+
             <div class="row mb-4">
-                <div class="form-group col-4">
-                    <label class="sr-only" for="genero">Genêro:</label>
-                    <input class="form-control form-control-lg" type="text" name="genero" value="<?= $aluno->genero ?>">
+                <div class="form-group col-6">
+                    <label class="sr-only" for="turma">Turma:</label>
+                    <select class="form-control form-control-lg" name="turma">
+                        <option value="ge">Gestão Empresarial</option>
+                        <option value="gpi">Gestão da Produção Industrial</option>
+                        <option value="gti">Gestão da Técnologia da Informação</option>
+                        <option value="dsm">Desenvolvimento de software Multiplataforma</option>
+                    </select>
                 </div>
                 
+                <div class="form-group col-3">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-dark btn-lg <?php echo ($aluno->genero == "0") ? "active" : null; ?>">
+                            <input type="radio" name="genero" id="genero1" autocomplete="off" value="0" <?php echo ($aluno->genero == "0") ? "checked" : null; ?>>Masculino
+                        </label>
+                        <label class="btn btn-dark btn-lg <?php echo ($aluno->genero == "1") ? "active" : null; ?>">
+                            <input type="radio" name="genero" id="genero2" autocomplete="off" value="1" <?php echo ($aluno->genero == "1") ? "checked" : null; ?>>Feminino
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group col-3">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-dark btn-lg" for="statusMat">
+                            <input type="checkbox" name="statusMat" <?php echo ($aluno->statusMat == "on") ? "checked" : null; ?>> Mátricula Ativa
+                        </label>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!--<div class="row mb-4">
                 <div class="form-group col-4">
                     <label class="sr-only" for="turma">Turma:</label>
-                    <input class="form-control form-control-lg" type="text" name="turma" value="<?= $aluno->turma ?>">
+                    <input class="form-control form-control-lg" type="text" name="turma" value="<">
+                </div>
+
+                <div class="form-group col-4">
+                    <label class="sr-only" for="genero">Genêro:</label>
+                    <input class="form-control form-control-lg" type="text" name="genero" value="">
                 </div>
                 
                 <div class="form-group col-4">
                     <label class="sr-only" for="statusMat">Matrícula:</label>
-                    <input class="form-control form-control-lg" type="text" name="statusMat" value="<?= $aluno->statusMat ?>">
+                    <input class="form-control form-control-lg" type="text" name="statusMat" value="">
                 </div>
-            </div>
+            </div>-->
             
             
             <a href="../sis-escolar/alunos-listar.php" class="btn btn-lg btn-dark btn-lg px-5">Voltar</a>
             <button class="btn btn-lg btn-dark btn-lg px-5" type="submit">Gravar</button>
+
+            <a class="btn btn-dark sair" href="../sis-escolar/usuario-logout.php">Logout</a>
             
             <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
         </form>

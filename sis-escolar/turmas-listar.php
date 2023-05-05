@@ -1,5 +1,11 @@
 <?php
 
+require_once 'usuario-verifica.php';
+
+?>
+
+<?php
+
 // Inclui o arquivo que contém a classe Turma
 require_once "classes/Turma.php";
 
@@ -50,6 +56,9 @@ $lista = $turma->listar();
         </table>
     </div>
 
-    <a href="../sis-escolar/turmas-gerenciar.php" class="btn btn-lg btn-dark px-5 voltar">Voltar</a>
+    <a href="../sis-escolar/turmas-gerenciar.php" class="btn btn-dark
+    voltar">Voltar</a>
+
+    <a class="btn btn-dark sair" href="../sis-escolar/usuario-logout.php">Logout</a>
 </body>
 </html>
