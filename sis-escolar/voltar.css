@@ -1,0 +1,11 @@
+.voltar{
+    position: fixed;
+    left: 1em;
+    top: 1em;
+}
+
+.sair{
+    position: fixed;
+    right: 1em;
+    top: 1em;
+}
