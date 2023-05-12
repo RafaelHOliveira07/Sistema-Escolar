@@ -4,6 +4,16 @@ require_once 'usuario-verifica.php';
 
 ?>
 
+<?php
+
+require_once "classes/Turma.php";
+
+$turma = new Turma();
+
+$lista = $turma->listar();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -131,10 +141,14 @@ require_once 'usuario-verifica.php';
                 <div class="form-group col-6">
                     <label class="sr-only" for="turma">Turma:</label>
                     <select class="form-control form-control-lg" name="turma">
-                        <option value="ge">Gestão Empresarial</option>
-                        <option value="gpi">Gestão da Produção Industrial</option>
-                        <option value="gti">Gestão da Técnologia da Informação</option>
-                        <option value="dsm">Desenvolvimento de software Multiplataforma</option>
+                        <option value=''>Selecione...</option>
+                        <?php
+                            foreach ($lista as $linha):
+                                echo "<option value='{$linha['id']}'>
+                                                     {$linha['descTurma']}
+                                     </option>";
+                            endforeach
+                        ?>
                     </select>
                 </div>
                 

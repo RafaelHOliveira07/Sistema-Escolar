@@ -17,6 +17,7 @@ require_once 'usuario-verifica.php';
   <link href="https://getbootstrap.com.br/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Estilos customizados para esse template -->
   <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/9869816a76.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="voltar.css">
 </head>
 
@@ -33,7 +34,7 @@ require_once 'usuario-verifica.php';
       <a class="nav-link btn-dark" href="../sis-escolar/diciplinas-gerenciar.php">Gerenciar Diciplinas</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link btn-dark sair" href="../sis-escolar/usuario-logout.php">Logout</a>
+      <a class="nav-link btn-dark sair font-weight-bold" href="../sis-escolar/usuario-logout.php">Sair <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
     </li>
   </ul>
 </body>

@@ -14,7 +14,7 @@ class Aluno
     public $cidade;
     public $estado;
     public $genero;
-    public $turma;
+    public $turma_id;
     public $statusMat;
 
     // Define um método construtor na classe com parâmetro opcional
@@ -32,7 +32,7 @@ class Aluno
     public function inserir()
     {
         // Define a string SQL de inserção de dados na tabela "tb_alunos"
-        $sql = "INSERT INTO tb_alunos (nome, dataNasc, email, tel, cep, endereco, nCasa, bairro, cidade, estado, genero, turma, statusMat) VALUES (
+        $sql = "INSERT INTO tb_alunos (nome, dataNasc, email, tel, cep, endereco, nCasa, bairro, cidade, estado, genero, turma_id, statusMat) VALUES (
             '" .$this->nome. "',
             '" .$this->dataNasc. "',
             '" .$this->email. "',
@@ -44,12 +44,11 @@ class Aluno
             '" .$this->cidade. "',
             '" .$this->estado. "',
             '" .$this->genero. "',
-            '" .$this->turma. "',
+            '" .$this->turma_id. "',
             '" .$this->statusMat. "'
         )";
 
-        // Cria uma nova conexão PDO com o banco de dados "sis-escolar"
-        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
+        include_once "classes/conexao.php";
 
         // Executa a string SQL na conexão, inserindo os dados na tabela "tb_alunos"
         $conexao->exec($sql);
@@ -60,7 +59,7 @@ class Aluno
     public function listar()
     {
         // Define a string SQL para selecionar todos os registros da tabela
-        $sql = "SELECT * FROM tb_alunos";
+        $sql = "SELECT a.id, a.nome, a.dataNasc, a.email, a.tel, a.cep, a.endereco, a.nCasa, a.bairro, a.cidade, a.estado, a.genero, t.descTurma, a.statusMat FROM tb_alunos a INNER JOIN tb_turmas t ON a.turma_id = t.id ORDER BY a.id";
 
         // Cria uma nova conexão PDO com o banco de dados "sis-escolar"
         $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
