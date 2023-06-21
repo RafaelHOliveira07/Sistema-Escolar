@@ -33,6 +33,7 @@ $lista = $turma->listar();
     <link href="https://getbootstrap.com.br/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/9869816a76.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="voltar.css">
+    
 </head>
 <body class="text-center flex-column">
     <h1 class="font-weight-bold text-dark">Sistema Acadêmico</h1>
@@ -57,44 +58,49 @@ $lista = $turma->listar();
                     <label class="sr-only" for="email">E-mail:</label>
                     <input class="form-control form-control-lg" type="email" name="email" value="<?= $aluno->email ?>">
                 </div>
+
+                <div class="form-group col-9">
+                    <label class="sr-only" for="cpf">E-mail:</label>
+                    <input class="form-control form-control-lg" type="text" name="cpf" value="<?= $aluno->cpf ?>" maxlength="14" onkeyup="cpfreplace(event)"">
+                </div>
                 
                 <div class="form-group col-3">
                     <label class="sr-only" for="tel">Telefone:</label>
-                    <input class="form-control form-control-lg" type="tel" name="tel" value="<?= $aluno->tel ?>">
+                    <input class="form-control form-control-lg" type="tel" name="tel" value="<?= $aluno->tel ?>" maxlength="15" onkeyup="telefone(event)">
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-2">
                     <label class="sr-only" for="cep">CEP:</label>
-                    <input class="form-control form-control-lg" type="text" name="cep" value="<?= $aluno->cep ?>">
+                    <input class="form-control form-control-lg" type="text" name="cep" id="cep" value="<?= $aluno->cep ?>" maxlength="9" onkeyup="cepreplace(event)" onblur="pesquisacep(this.value);">
                 </div>
                 
                 <div class="form-group col-8">
                     <label class="sr-only" for="endereco">Endereço:</label>
-                    <input class="form-control form-control-lg" type="text" name="endereco" value="<?= $aluno->endereco ?>">
+                    <input class="form-control form-control-lg" type="text" name="endereco" id="endereco" value="<?= $aluno->endereco ?>">
                 </div>
                 
                 <div class="form-group col-2">
                     <label class="sr-only" for="nCasa">Número:</label>
-                    <input class="form-control form-control-lg" type="text" name="nCasa" value="<?= $aluno->nCasa ?>">
+                    <input class="form-control form-control-lg" type="text" name="nCasa" id="nCasa" value="<?= $aluno->nCasa ?>">
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-5">
                     <label class="sr-only" for="bairro">Bairro:</label>
-                    <input class="form-control form-control-lg" type="text" name="bairro" value="<?= $aluno->bairro ?>">
+                    <input class="form-control form-control-lg" type="text" name="bairro" id="bairro" value="<?= $aluno->bairro ?>">
                 </div>
                 
                 <div class="form-group col-5">
                     <label class="sr-only" for="cidade">Cidade:</label>
-                    <input class="form-control form-control-lg" type="text" name="cidade" value="<?= $aluno->cidade ?>">
+                    <input class="form-control form-control-lg" type="text" name="cidade" id="cidade" value="<?= $aluno->cidade ?>">
                 </div>
                 
                 <div class="form-group col-2">
                     <label class="sr-only" for="estado">Estado:</label>
-                    <input class="form-control form-control-lg" type="text" name="estado" value="<?= $aluno->estado ?>">
+                    <input class="form-control form-control-lg" type="text" name="estado" id="estado" value="<?= $aluno->estado ?>">
                 </div>
             </div>
 
@@ -104,10 +110,15 @@ $lista = $turma->listar();
                     <select class="form-control form-control-lg" name="turma_id">
                         <option value="<?= $aluno->turma_id ?>"><?= $aluno->descTurma ?></option>
                         <?php
+                        $turmasExibidas = array();
+                        $turmasExibidas[0] = $aluno->turma_id;
                             foreach ($lista as $linha):
-                                echo "<option value='{$linha['turma_id']}'>
-                                                     {$linha['descTurma']}
-                                     </option>";
+                                $turmaId = $linha['turma_id'];
+                                $descTurma = $linha['descTurma'];
+                                if(!in_array($turmaId, $turmasExibidas)){
+                                    echo "<option value='{$turmaId}'>{$descTurma}</option>";
+                                    $turmasExibidas[] = $turmaId;
+                                }
                             endforeach
                         ?>
                     </select>
@@ -130,26 +141,7 @@ $lista = $turma->listar();
                         <label class="custom-control-label" for="statusMat">Matrícula</label>
                     </div>
                 </div> 
-            </div>
-                
-            
-            <!--<div class="row mb-4">
-                <div class="form-group col-4">
-                    <label class="sr-only" for="turma">Turma:</label>
-                    <input class="form-control form-control-lg" type="text" name="turma" value="<">
-                </div>
-
-                <div class="form-group col-4">
-                    <label class="sr-only" for="genero">Genêro:</label>
-                    <input class="form-control form-control-lg" type="text" name="genero" value="">
-                </div>
-                
-                <div class="form-group col-4">
-                    <label class="sr-only" for="statusMat">Matrícula:</label>
-                    <input class="form-control form-control-lg" type="text" name="statusMat" value="">
-                </div>
-            </div>-->
-            
+            </div>            
             
             <a href="../sis-escolar/alunos-listar.php" class="btn btn-lg btn-dark btn-lg px-5">Voltar</a>
             <button class="btn btn-lg btn-dark btn-lg px-5" type="submit">Gravar</button>
@@ -159,6 +151,8 @@ $lista = $turma->listar();
             <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
         </form>
     </div>
+
+    <script src="../sis-escolar/js/script.js"></script>
     
 </body>
 </html>

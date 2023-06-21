@@ -37,10 +37,12 @@ $lista = $aluno->listar();
         <table class="table table-bordered table-sm table-hover">
         <thead class="thead-dark">
             <tr>
+                <th>Foto</th>
                 <th>Código</th>
                 <th>Nome</th>
                 <th>Data de Nascimento</th>
                 <th>E-mail</th>
+                <th>CPF</th>
                 <th>Telefone</th>
                 <th>CEP</th>
                 <th>Endereço</th>
@@ -56,10 +58,12 @@ $lista = $aluno->listar();
         </thead>
             <?php foreach ($lista as $linha): ?>
             <tr class="text-nowrap">
+            <td><?php echo "<img src='uploads/{$linha['foto']}' class='img-fluid img-thumbnail'>" ?></td>
             <td><?php echo $linha['id'] ?></td>
             <td><?php echo $linha['nome'] ?></td>
             <td><?php $datetime = new DateTime($linha['dataNasc']); echo $datetime->format('d/m/Y') ?></td>
             <td><?php echo $linha['email'] ?></td>
+            <td><?php echo $linha['cpf'] ?></td>
             <td><?php echo $linha['tel'] ?></td>
             <td><?php echo $linha['cep'] ?></td>
             <td><?php echo $linha['endereco'] ?></td>

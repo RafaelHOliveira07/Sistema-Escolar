@@ -5,22 +5,15 @@ require_once "classes/Aluno.php";
 // Cria um novo objeto Turma
 $aluno = new Aluno();
 
-$telefone = $_POST['tel'];
-
-$telefone="(".substr($telefone,0,2).") ".substr($telefone,2,-4)."-".substr($telefone,-4);
-
-$cep = $_POST['cep'];
-
-$cep = substr($cep,0,5)."-".substr($cep,5,7);
 // Define as propriedades descTurma e ano do objeto Turma
 // com os valores enviados pelo formulário
-if(isset($_POST['statusMat']))
-{
+if (isset($_POST['statusMat'])) {
     $aluno->nome = $_POST['nome'];
     $aluno->dataNasc = $_POST['dataNasc'];
     $aluno->email = $_POST['email'];
-    $aluno->tel = $telefone;
-    $aluno->cep = $cep;
+    $aluno->cpf = $_POST['cpf'];
+    $aluno->tel = $_POST['tel'];
+    $aluno->cep = $_POST['cep'];
     $aluno->endereco = $_POST['endereco'];
     $aluno->nCasa = $_POST['nCasa'];
     $aluno->bairro = $_POST['bairro'];
@@ -29,18 +22,35 @@ if(isset($_POST['statusMat']))
     $aluno->genero = $_POST['genero'];
     $aluno->turma_id = $_POST['turma_id'];
     $aluno->statusMat = $_POST['statusMat'];
+    if (isset($_FILES['foto']['name']) && $_FILES['foto']['error'] == 0) {
+
+        $arquivo_tmo = $_FILES['foto']['tmp_name'];
+        $nomeImagem = $_FILES['foto']['name'];
+        $extensao = strrchr($nomeImagem, '.');
+        $extensao = strtolower($extensao);
+
+        if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
+
+            $novoNome = md5(microtime()) . $extensao;
+            $destino = 'uploads/' . $novoNome;
+
+            @move_uploaded_file($arquivo_tmo, $destino);
+
+            $aluno->foto = $novoNome;
+        }
+    }
 
     // Chama o método inserir() no objeto Turma para inserir
     //os danos da nova turma no banco de dados
     $aluno->inserir();
-}
-else
-{
+
+} else {
     $aluno->nome = $_POST['nome'];
     $aluno->dataNasc = $_POST['dataNasc'];
     $aluno->email = $_POST['email'];
-    $aluno->tel = $telefone;
-    $aluno->cep = $cep;
+    $aluno->cpf = $_POST['cpf'];
+    $aluno->tel = $_POST['tel'];
+    $aluno->cep = $_POST['cep'];
     $aluno->endereco = $_POST['endereco'];
     $aluno->nCasa = $_POST['nCasa'];
     $aluno->bairro = $_POST['bairro'];
@@ -48,6 +58,23 @@ else
     $aluno->estado = $_POST['estado'];
     $aluno->genero = $_POST['genero'];
     $aluno->turma_id = $_POST['turma_id'];
+    if (isset($_FILES['foto']['name']) && $_FILES['foto']['error'] == 0) {
+
+        $arquivo_tmo = $_FILES['foto']['tmp_name'];
+        $nomeImagem = $_FILES['foto']['name'];
+        $extensao = strrchr($nomeImagem, '.');
+        $extensao = strtolower($extensao);
+
+        if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
+
+            $novoNome = md5(microtime()) . $extensao;
+            $destino = 'uploads/' . $novoNome;
+
+            @move_uploaded_file($arquivo_tmo, $destino);
+
+            $aluno->foto = $novoNome;
+        }
+    }
 
     // Chama o método inserir() no objeto Turma para inserir
     //os danos da nova turma no banco de dados

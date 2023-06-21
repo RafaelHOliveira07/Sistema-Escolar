@@ -5,7 +5,7 @@ $senha = $_POST['senha'];
 
 $sql = "SELECT * FROM tb_usuarios WHERE usuario='{$usuario}' and senha='{$senha}'";
 
-$conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
+$conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-biblioteca','root','');
 $resultado = $conexao->query($sql);
 $linha = $resultado->fetch();
 $usuario_logado = $linha['usuario'];

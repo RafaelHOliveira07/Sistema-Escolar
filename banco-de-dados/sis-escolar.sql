@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Maio-2023 às 17:30
+-- Tempo de geração: 22-Jun-2023 às 00:09
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -32,6 +32,7 @@ CREATE TABLE `tb_alunos` (
   `nome` varchar(40) NOT NULL,
   `dataNasc` date NOT NULL,
   `email` varchar(50) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
   `tel` varchar(17) NOT NULL,
   `cep` varchar(9) NOT NULL,
   `endereco` varchar(50) NOT NULL,
@@ -41,25 +42,27 @@ CREATE TABLE `tb_alunos` (
   `estado` varchar(2) NOT NULL,
   `genero` varchar(9) NOT NULL,
   `turma_id` int(8) NOT NULL,
-  `statusMat` varchar(2) DEFAULT NULL
+  `statusMat` varchar(2) DEFAULT NULL,
+  `foto` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Extraindo dados da tabela `tb_alunos`
 --
 
-INSERT INTO `tb_alunos` (`id`, `nome`, `dataNasc`, `email`, `tel`, `cep`, `endereco`, `nCasa`, `bairro`, `cidade`, `estado`, `genero`, `turma_id`, `statusMat`) VALUES
-(1, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19)99909-6992', '13972370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 1, ''),
-(6, 'luis felipe', '2000-08-29', 'felipe_salvarani@hotmail.com', '(19)99692-9909', '13972-37', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '1', 1, 'on'),
-(7, 'Junior', '2005-02-28', 'luis.felipe.salvarani@gmail.com', '(19)99692-9909', '13972-37', 'Rua Vítor Meirelles', '200', 'Cubatão', 'Itapira', 'SP', '0', 3, 'on'),
-(9, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19) 99909 - 6992', '13972370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 1, 'on'),
-(10, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19) 99909-6992', '13972-37', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 1, ''),
-(11, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19) 99909-6992', '13972-37', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 1, 'on'),
-(12, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 1, 'on'),
-(13, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 3, ''),
-(14, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 3, ''),
-(15, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 3, ''),
-(16, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 4, 'on');
+INSERT INTO `tb_alunos` (`id`, `nome`, `dataNasc`, `email`, `cpf`, `tel`, `cep`, `endereco`, `nCasa`, `bairro`, `cidade`, `estado`, `genero`, `turma_id`, `statusMat`, `foto`) VALUES
+(21, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 6, 'on', ''),
+(22, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 7, 'on', '5d31c7b6edc96e3574f48b441e716659.jpg'),
+(23, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 6, 'on', '542d0ea608cab335ab1466fc0ee24f54.jpg'),
+(24, '', '0000-00-00', '', '', '', '', '', '', '', '', '', '0', 0, '', ''),
+(25, '', '0000-00-00', '', '', '', '', '', '', '', '', '', '0', 0, '', ''),
+(26, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 7, 'on', ''),
+(27, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 7, 'on', '7cab8084c7e18c5bdb6f2885cffc49a2.jpg'),
+(28, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 7, 'on', 'a8d05358910605f5c95c30cff60714fe.jpg'),
+(29, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 7, 'on', '4ea97a56d20afda7e5d820a5062df703.jpg'),
+(30, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 7, 'on', '3b0b96825d77d2c65f91d0d82e414ff6.jpg'),
+(31, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 7, 'on', '58643c17823029ae3e0834a8366f1d5f.jpg'),
+(32, 'Luis Felipe Salvarani', '2000-03-13', 'felipe_salvarani@hotmail.com', '489.128.718-70', '(19) 99909-6992', '13972-370', 'Rua Vítor Meirelles', '107', 'Cubatão', 'Itapira', 'SP', '0', 7, 'on', '4a28d3137f07f51b7e0d92f4a4577ef6.jpg');
 
 -- --------------------------------------------------------
 
@@ -98,8 +101,8 @@ CREATE TABLE `tb_turmas` (
 --
 
 INSERT INTO `tb_turmas` (`turma_id`, `descTurma`, `ano`) VALUES
-(5, 'Gestão da Produção I', '2022'),
-(6, 'Gestão Empresarial', '2023');
+(6, 'Gestão Empresarial', '2023'),
+(7, 'Desenvolvimento de Software Multiplataforma', '2023');
 
 -- --------------------------------------------------------
 
@@ -156,7 +159,7 @@ ALTER TABLE `tb_usuarios`
 -- AUTO_INCREMENT de tabela `tb_alunos`
 --
 ALTER TABLE `tb_alunos`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de tabela `tb_disciplinas`
@@ -168,7 +171,7 @@ ALTER TABLE `tb_disciplinas`
 -- AUTO_INCREMENT de tabela `tb_turmas`
 --
 ALTER TABLE `tb_turmas`
-  MODIFY `turma_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `turma_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `tb_usuarios`

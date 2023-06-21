@@ -6,6 +6,7 @@ class Aluno
     public $nome;
     public $dataNasc;
     public $email;
+    public $cpf;
     public $tel;
     public $cep;
     public $endereco;
@@ -17,7 +18,7 @@ class Aluno
     public $turma_id;
     public $descTurma;
     public $statusMat;
-    public $number;
+    public $foto;
 
     // Define um método construtor na classe com parâmetro opcional
     public function __construct($id = false)
@@ -34,10 +35,11 @@ class Aluno
     public function inserir()
     {
         // Define a string SQL de inserção de dados na tabela "tb_alunos"
-        $sql = "INSERT INTO tb_alunos (nome, dataNasc, email, tel, cep, endereco, nCasa, bairro, cidade, estado, genero, turma_id, statusMat) VALUES (
+        $sql = "INSERT INTO tb_alunos (nome, dataNasc, email, cpf, tel, cep, endereco, nCasa, bairro, cidade, estado, genero, turma_id, statusMat, foto) VALUES (
             '" .$this->nome. "',
             '" .$this->dataNasc. "',
             '" .$this->email. "',
+            '" .$this->cpf. "',
             '" .$this->tel. "',
             '" .$this->cep. "',
             '" .$this->endereco. "',
@@ -47,7 +49,8 @@ class Aluno
             '" .$this->estado. "',
             '" .$this->genero. "',
             '" .$this->turma_id. "',
-            '" .$this->statusMat. "'
+            '" .$this->statusMat. "',
+            '" .$this->foto. "'
         )";
 
         include_once "classes/Conexao.php";
@@ -56,12 +59,16 @@ class Aluno
         $conexao->exec($sql);
 
         header('Location: alunos-sucesso.php');
+
+        if ($conexao->lastInsertId()) {
+            echo '<script>alert("As informações foram gravadas no banco de dados!");</script>';
+        }
     }
 
     public function listar()
     {
         // Define a string SQL para selecionar todos os registros da tabela
-        $sql = "SELECT a.id, a.nome, a.dataNasc, a.email, a.tel, a.cep, a.endereco, a.nCasa, a.bairro, a.cidade, a.estado, a.genero, t.descTurma, a.statusMat FROM tb_alunos a JOIN tb_turmas t ON a.turma_id = t.turma_id ORDER BY a.id";
+        $sql = "SELECT a.id, a.nome, a.dataNasc, a.email, a.cpf, a.tel, a.cep, a.endereco, a.nCasa, a.bairro, a.cidade, a.estado, a.genero, t.descTurma, a.statusMat, a.foto FROM tb_alunos a JOIN tb_turmas t ON a.turma_id = t.turma_id ORDER BY a.id";
 
         // Cria uma nova conexão PDO com o banco de dados "sis-escolar"
         $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
@@ -94,7 +101,7 @@ class Aluno
     public function carregar()
     {
         // Query SQL para buscar uma turma no banco de dados pelo id
-        $sql = "SELECT a.id, a.nome, a.dataNasc, a.email, a.tel, a.cep, a.endereco, a.nCasa, a.bairro, a.cidade, a.estado, a.genero, a.turma_id, t.descTurma, a.statusMat FROM tb_alunos a JOIN tb_turmas t ON a.turma_id = t.turma_id WHERE id= {$this->id} ORDER BY a.id";
+        $sql = "SELECT a.id, a.nome, a.dataNasc, a.email, a.cpf, a.tel, a.cep, a.endereco, a.nCasa, a.bairro, a.cidade, a.estado, a.genero, a.turma_id, t.descTurma, a.statusMat FROM tb_alunos a JOIN tb_turmas t ON a.turma_id = t.turma_id WHERE id= {$this->id} ORDER BY a.id";
         $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
 
         // Execução do query e armazenamento do resultado em uma variável
@@ -106,6 +113,7 @@ class Aluno
         $this->nome = $linha['nome'];
         $this->dataNasc = $linha['dataNasc'];
         $this->email = $linha['email'];
+        $this->cpf = $linha['cpf'];
         $this->tel = $linha['tel'];
         $this->cep = $linha['cep'];
         $this->endereco = $linha['endereco'];
@@ -126,6 +134,7 @@ class Aluno
                     nome = '$this->nome' ,
                     dataNasc = '$this->dataNasc' ,
                     email = '$this->email' ,
+                    cpf = '$this->cpf' ,
                     tel = '$this->tel' ,
                     cep = '$this->cep' ,
                     endereco = '$this->endereco' ,
