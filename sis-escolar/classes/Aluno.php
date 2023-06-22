@@ -71,7 +71,7 @@ class Aluno
         $sql = "SELECT a.id, a.nome, a.dataNasc, a.email, a.cpf, a.tel, a.cep, a.endereco, a.nCasa, a.bairro, a.cidade, a.estado, a.genero, t.descTurma, a.statusMat, a.foto FROM tb_alunos a JOIN tb_turmas t ON a.turma_id = t.turma_id ORDER BY a.id";
 
         // Cria uma nova conexão PDO com o banco de dados "sis-escolar"
-        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
+        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis_escolar','root','');
 
         // Executa a string SQL na conexão retornando um objeto de restultado
         $resultado = $conexao->query($sql);
@@ -91,7 +91,7 @@ class Aluno
 
         // Cria uma nova conexão PDO com o banco de dados localizado
         // no servidor "127.0.0.1" e autentica com o usuário "root" (sem senha)
-        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
+        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis_escolar','root','');
 
         // Executa a intrução SQL de exclusão utilizando o métedo
         // "exerc" do objeto de conexão PDO criado acima
@@ -102,7 +102,7 @@ class Aluno
     {
         // Query SQL para buscar uma turma no banco de dados pelo id
         $sql = "SELECT a.id, a.nome, a.dataNasc, a.email, a.cpf, a.tel, a.cep, a.endereco, a.nCasa, a.bairro, a.cidade, a.estado, a.genero, a.turma_id, t.descTurma, a.statusMat FROM tb_alunos a JOIN tb_turmas t ON a.turma_id = t.turma_id WHERE id= {$this->id} ORDER BY a.id";
-        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
+        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis_escolar','root','');
 
         // Execução do query e armazenamento do resultado em uma variável
         $resultado = $conexao->query($sql);
@@ -147,7 +147,7 @@ class Aluno
                     statusMat = '$this->statusMat'
                 WHERE id = $this->id ";
 
-        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
+        $conexao = new PDO('mysql:host=127.0.0.1;dbname=sis_escolar','root','');
         $conexao->exec($sql);
     }
 

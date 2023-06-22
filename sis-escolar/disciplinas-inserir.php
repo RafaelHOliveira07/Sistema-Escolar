@@ -30,7 +30,7 @@ require_once 'usuario-verifica.php';
             <input class="form-control form-control-lg" type="number" name="cargaHora" placeholder="Carga Horária">
         </div>
         
-        <a href="../sis-escolar/diciplinas-gerenciar.php" class="btn btn-lg btn-dark btn-lg px-5">Voltar</a>
+        <a href="../sis-escolar/disciplinas-listar.php" class="btn btn-lg btn-dark btn-lg px-5">Voltar</a>
         <button class="btn btn-lg btn-dark btn-lg px-5" type="submit">Gravar</button>
 
         <a class="btn btn-dark sair" href="../sis-escolar/usuario-logout.php">Logout</a>
